@@ -1,6 +1,9 @@
 from handlers.contact_handler import (
-    add_contact, 
-    change_contact, 
+    add_birthday,
+    add_contact,
+    birthdays, 
+    change_contact,
+    show_birthday, 
     show_phone, 
     all, 
     close,
@@ -15,7 +18,10 @@ COMMANDS_TO_HANDLERS = {
     "add": add_contact,
     "change": change_contact,
     "phone": show_phone,
-    "all": all  
+    "all": all,
+    "add-birthday": add_birthday,
+    "show-birthday": show_birthday,
+    "birthdays": birthdays,
 }
 
 

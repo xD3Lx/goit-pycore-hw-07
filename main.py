@@ -1,4 +1,5 @@
 from handlers.command_handler import handle_command
+from model.address_book import AddressBook
 
 def parse_input(user_input):
     """
@@ -16,14 +17,15 @@ def parse_input(user_input):
 
 
 def main():
-    contacts = {}
+    book = AddressBook()
+
     print("Welcome to the assistant bot!")
     while True:
         # Get user input and parse it into a command and arguments
         user_input = input("Enter a command: ")
         command, *args = parse_input(user_input)
 
-        print(handle_command(command, args, contacts))
+        print(handle_command(command, args, book))
 
         # Check if the command is "close" or "exit" to terminate the chat
         if command in ["close", "exit"]:

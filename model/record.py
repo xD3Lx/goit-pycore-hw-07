@@ -1,9 +1,10 @@
-from model.fields import Name, Phone
+from model.fields import Birthday, Name, Phone
 
 class Record:
     def __init__(self, name):
-        self.name = Name(name)
-        self.phones = []
+        self.name: Name = Name(name)
+        self.phones: list[Phone] = []
+        self.birthday: Birthday | None = None
 
     def add_phone(self, phone_number):
         """
@@ -50,11 +51,13 @@ class Record:
         Returns:
             Phone: The phone object if found, None otherwise.
         """
-
         for phone in self.phones:
             if phone.value == phone_number:
                 return phone
         return None
+    
+    def add_birthday(self, birthday):
+        self.birthday = Birthday(birthday)
 
     def __str__(self):
-        return f"Contact name: {self.name.value}, phones: {'; '.join(p.value for p in self.phones)}"
+        return f"Contact name: {self.name.value}, phones: {'; '.join([p.value for p in self.phones])}, birthday: {self.birthday.value if self.birthday else 'N/A'}"
