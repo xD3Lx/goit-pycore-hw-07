@@ -31,14 +31,8 @@ class AddressBook(UserDict):
 
         Returns:
             Record: The record object associated with the given name.
-
-        Raises:
-            KeyError: If a record with the specified name is not found in the address book.
         """
-        record = self.data.get(name, None)
-        if record is None:
-            raise KeyError(f"Contact with name '{name}' not found.")
-        return record
+        return self.data.get(name, None)
 
 
     def delete(self, name):
@@ -85,7 +79,7 @@ class AddressBook(UserDict):
                 continue
 
             #Parse the birthday string into a datetime object
-            birthday = datetime.strptime(user.birthday.value, "%d.%m.%Y").date()
+            birthday = user.birthday.value
             #Replace the year of the birthday with the current year
             birthday_this_year = birthday.replace(year=today_date.year)
 
